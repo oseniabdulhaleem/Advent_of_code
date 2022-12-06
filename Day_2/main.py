@@ -41,50 +41,50 @@
 #         base = 0
 
 
-val =  {
-            'A':'rock',
-            'B':'paper' ,
-            'C':'scissors'
-        }
+# val =  {
+#             'A':'rock',
+#             'B':'paper' ,
+#             'C':'scissors'
+#         }
 
-n_val = {
-        'rock' : 1,
-        'paper' : 2,
-        'scissors': 3
-        }
+# n_val = {
+#         'rock' : 1,
+#         'paper' : 2,
+#         'scissors': 3
+#         }
 
-total = []
-
-
-#check for the of input given
-
-l_val = { 'paper': 'rock', 'scissors': 'paper', 'rock': 'scissors' }
-
-w_val = { 'rock': 'paper', 'scissors': 'rock', 'paper': 'rock'}
-
-with open(r'C:\Users\HP\Desktop\advent_of_code\Day_2\data.txt') as f:
-    for x in f:
-        base = 0
-        in_a, in_b = x.strip().split() #input from file
-        # print(base)
-        if in_b == 'Y': #draw
-            in_b = val.get(in_a)
-            base += 3
-            base += n_val[in_b]
+# total = []
 
 
-        if in_b == 'X': #lose
-            in_b = l_val[val.get(in_a)]
-            base += n_val[in_b]
+# #check for the of input given
+
+# l_val = { 'paper': 'rock', 'scissors': 'paper', 'rock': 'scissors' }
+
+# w_val = { 'rock': 'paper', 'scissors': 'rock', 'paper': 'rock'}
+
+# with open(r'C:\Users\HP\Desktop\advent_of_code\Day_2\data.txt') as f:
+#     for x in f:
+#         base = 0
+#         in_a, in_b = x.strip().split() #input from file
+#         # print(base)
+#         if in_b == 'Y': #draw
+#             in_b = val.get(in_a)
+#             base += 3
+#             base += n_val[in_b]
 
 
-        if in_b == 'Z': #win
-            in_b = w_val[val.get(in_a)]
-            base += n_val[in_b]
-            base += 6
+#         if in_b == 'X': #lose
+#             in_b = l_val[val.get(in_a)]
+#             base += n_val[in_b]
 
-        total.append(base)
-print(sum(total))
+
+#         if in_b == 'Z': #win
+#             in_b = w_val[val.get(in_a)]
+#             base += n_val[in_b]
+#             base += 6
+
+#         total.append(base)
+# print(sum(total))
 
 # x = [('A', 'Y'),
 # ('B', 'X'),
@@ -107,3 +107,16 @@ print(sum(total))
 #     tot.append(base)
 
 # print(sum(tot))
+
+
+with open(r'C:\Users\HP\Desktop\advent_of_code\Day_2\data.txt') as f:
+        p2 = 0
+        for d in f:
+                in_a, in_b = d.strip().split()
+                p2 += {'X': 0, 'Y': 3, 'Z':6}[in_b]
+
+                p2 += {('A', 'X'): 3, ('A','Y'): 1, ('A','Z'): 2,
+                        ('B', 'X'): 1, ('B','Y'): 2, ('B','Z'): 3,
+                        ('C','X'): 2, ('C','Y'): 3, ('C','Z'): 1}[in_a, in_b]
+        print(p2)
+
